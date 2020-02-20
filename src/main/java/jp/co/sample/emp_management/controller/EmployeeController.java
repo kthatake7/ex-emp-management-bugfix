@@ -93,9 +93,14 @@ public class EmployeeController {
 		return "redirect:/employee/showList";
 	}
 	
-	public String findByName(String name, Model model) {
-		List<Employee> employeeList = employeeService.findByName(name);
+	@RequestMapping("/find-by-name")
+	public String findByName(String employeeName, Model model) {
+		List<Employee> employeeList = employeeService.findByName(employeeName);
+		if(employeeList.size() == 0) {
+			employeeList = employeeService.showList();
+			model.addAttribute("message", "1件もありませんでした");
+		}
 		model.addAttribute("employeeList", employeeList);
-		return "/employee/showList";
+		return "employee/list";
 	}
 }
