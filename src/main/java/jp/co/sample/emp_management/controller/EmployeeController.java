@@ -92,4 +92,10 @@ public class EmployeeController {
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
 	}
+	
+	public String findByName(String name, Model model) {
+		List<Employee> employeeList = employeeService.findByName(name);
+		model.addAttribute("employeeList", employeeList);
+		return "/employee/showList";
+	}
 }

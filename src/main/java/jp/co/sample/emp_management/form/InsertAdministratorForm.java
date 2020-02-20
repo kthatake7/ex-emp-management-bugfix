@@ -21,6 +21,9 @@ public class InsertAdministratorForm {
 	@NotBlank(message="入力必須です")
 	private String password;
 	
+	@NotBlank(message="入力必須です")
+	private String confirmPassword;
+	
 	public String getName() {
 		return name;
 	}
